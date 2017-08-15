@@ -1,5 +1,5 @@
 # VegaLiteLabels
-Adds labels to vega lite bar charts, as there is no built-in support for this.
+Adds labels to vega lite charts, rendered using SVG. I wrote this as there is no built-in support for labels in vega-lite at this time, and full vega is too complicated for others who may be creating charts in my organisation.
 
 ## Usage
 
