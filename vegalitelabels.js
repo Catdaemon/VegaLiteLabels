@@ -1,3 +1,4 @@
+// Do a search of the scene graph to find marks
 function AddVegaLiteLabels(graph)
 {
     // Supported types and their offsets
@@ -26,6 +27,7 @@ function AddVegaLiteLabels(graph)
                     // Calculate correct position
                     var offset = typeOffsets[node.marktype] ? typeOffsets[node.marktype] : 0;
                     var posX = item.x + (item.width ? item.width / 2 : 0);
+
                     var posY = item.y + (item.height ? item.height / 2 : 0) + offset;
 
                     // Add the label
@@ -38,15 +40,19 @@ function AddVegaLiteLabels(graph)
                         .attr("text-anchor", "middle")
                         .text(datum.Label);
 
-                    // Update chart when the mouse moves over it - for zooming/panning esp. line charts
+                    // Update chart when the mouse moves - for zooming/panning esp. line charts
                     (function(item, textelement, offset) {
-                        document.body.addEventListener('mousemove', function(){
+                        var func = function()
+                        {
                             var posX = item.x + (item.width ? item.width / 2 : 0);
                             var posY = item.y + (item.height ? item.height / 2 : 0) + offset;
 
                             textelement.attr("x", posX);
-                            textelement.attr("y", posY + 4)
-                        });
+                            textelement.attr("y", posY);
+                        };
+
+                        document.body.addEventListener('mousemove', func);
+                        document.body.addEventListener('mousewheel', func);
                     })(item, textelement, offset);
 
                     
