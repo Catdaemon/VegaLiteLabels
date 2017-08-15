@@ -10,3 +10,6 @@ vega.embed(selector, chart, options, function(error, result) {
   AddVegaLiteLabels(result.view._scenegraph.root.items);
 }
 ```
+## Output
+![chart 1](http://i.imgur.com/AtgHnCz.png)
+![chart 2](http://i.imgur.com/AF4cu0z.png)
