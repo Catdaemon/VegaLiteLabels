@@ -122,7 +122,7 @@ var vegaLabels = {
     },
 
     // Main function
-    addLabels: function(view, labelField)
+    addLabels: function(view, labelField, isVertical = null)
     {
         if (!view)
             throw new Error("No view provided.");
@@ -132,7 +132,7 @@ var vegaLabels = {
             throw new Error("No label field provided.");
 
         var graph = view._scenegraph.root.items;
-        var vertical = this._isChartVertical(graph);
+        var vertical = isVertical === null ? this._isChartVertical(graph) : isVertical;
         this._addLabels(graph, vertical, labelField);
     }
 }
